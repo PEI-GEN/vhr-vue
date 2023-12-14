@@ -159,6 +159,13 @@
                 return this.$store.state.currentHr;
             }
         },
+        created() {
+            console.log("home的created")
+            const tags = localStorage.getItem('tags');
+            if (tags) {
+                this.$store.commit('setTags', JSON.parse(tags));
+            }
+        },
         methods: {
             goChat() {
                 this.$router.push("/chat");
@@ -198,6 +205,7 @@
                             name: '基本资料',
                             path: '/emp/basic'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -208,6 +216,7 @@
                             name: '高级资料',
                             path: '/emp/adv'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -217,6 +226,7 @@
                             name: '员工资料',
                             path: '/per/emp'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -226,6 +236,7 @@
                             name: '员工奖惩',
                             path: '/per/ec'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -235,6 +246,7 @@
                             name: '员工培训',
                             path: '/per/train'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -244,6 +256,7 @@
                             name: '员工调薪',
                             path: '/per/salary'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -253,6 +266,7 @@
                             name: '员工调动',
                             path: '/per/mv'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -262,6 +276,7 @@
                             name: '工资账套管理',
                             path: '/sal/sob'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -271,6 +286,7 @@
                             name: '员工账套设置',
                             path: '/sal/sobcfg'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -280,6 +296,7 @@
                             name: '工资表管理',
                             path: '/sal/table'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -289,6 +306,7 @@
                             name: '月末处理',
                             path: '/sal/month'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -298,6 +316,7 @@
                             name: '工资表查询',
                             path: '/sal/search'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -307,6 +326,7 @@
                             name: '综合信息统计',
                             path: '/sta/all'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -316,6 +336,7 @@
                             name: '员工积分统计',
                             path: '/sta/score'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -325,6 +346,7 @@
                             name: '人事信息统计',
                             path: '/sta/pers'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -334,6 +356,7 @@
                             name: '人事记录统计',
                             path: '/sta/record'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -343,6 +366,7 @@
                             name: '基础信息设置',
                             path: '/sys/basic'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -352,6 +376,7 @@
                             name: '系统管理',
                             path: '/sys/cfg'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -361,6 +386,7 @@
                             name: '操作日志管理',
                             path: '/sys/log'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -370,6 +396,7 @@
                             name: '操作员管理',
                             path: '/sys/hr'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -379,6 +406,7 @@
                             name: '备份恢复数据库',
                             path: '/sys/data'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -388,6 +416,7 @@
                             name: '初始化数据库',
                             path: '/sys/init'
                         };
+                        this.selectedTag = tag;
                         this.handleTagClick(tag);
                         this.$store.commit('addTag', tag);
                         break;
@@ -403,9 +432,35 @@
             handleTagClick(tag) {
                 this.$router.push(tag.path);
                 this.selectedTag = tag;
+
+                // 更新本地存储
+                localStorage.setItem('tags', JSON.stringify(this.$store.state.tags));
             },
             handleTagClose(tag) {
-                this.$store.commit('removeTag', tag);
+                // this.$store.commit('removeTag', tag);
+                const tags = this.$store.state.tags;
+
+                if (tags.length > 1) { // 至少要保留一个标签
+                    const index = tags.findIndex(t => t.path === tag.path);
+
+                    if (index > 0) {
+                        const prevTag = tags[index - 1];
+                        if(this.selectedTag===tag){
+                            this.selectedTag = prevTag;
+                            this.$router.push(prevTag.path); // 跳转到前一个标签
+                        }
+
+                        // 删除当前标签
+                        this.$store.commit('removeTag', tag);
+
+                        // 更新本地存储
+                        localStorage.setItem('tags', JSON.stringify(this.$store.state.tags));
+                    } else {
+                        alert('第一个标签不能删除');
+                    }
+                } else {
+                    alert('至少要保留一个标签');
+                }
             }
         }
     }

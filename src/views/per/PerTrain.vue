@@ -27,22 +27,30 @@
                                 style='margin-right: 10px;'
                         >编辑
                         </el-button>
-                        <el-popconfirm
-                                confirm-button-text='好的'
-                                cancel-button-text='不用了'
-                                icon='el-icon-info'
-                                icon-color='red'
-                                title='这是一段内容确定删除吗？'
-                                @confirm='del(scope.row.id)'
-                        >
-                            <el-button
-                                    type='danger'
-                                    icon='el-icon-delete'
-                                    slot='reference'
-                                    size='mini'
-                            >删除
-                            </el-button>
-                        </el-popconfirm>
+                        <el-button
+                                icon='el-icon-edit'
+                                size='mini'
+                                type='info'
+                                style='margin-right: 10px;'
+                                @click='del(scope.row.id)'
+                        >删除
+                        </el-button>
+<!--                        <el-popconfirm-->
+<!--                                confirm-button-text='好的'-->
+<!--                                cancel-button-text='不用了'-->
+<!--                                icon='el-icon-info'-->
+<!--                                icon-color='red'-->
+<!--                                title='这是一段内容确定删除吗？'-->
+<!--                                @confirm='del(scope.row.id)'-->
+<!--                        >-->
+<!--                            <el-button-->
+<!--                                    type='danger'-->
+<!--                                    icon='el-icon-delete'-->
+<!--                                    slot='reference'-->
+<!--                                    size='mini'-->
+<!--                            >删除-->
+<!--                            </el-button>-->
+<!--                        </el-popconfirm>-->
                     </template>
                 </el-table-column>
             </el-table>
@@ -166,12 +174,17 @@
                 })
             },
             update() {
+                console.log('/per/train/modify')
                 this.putRequest('/per/train/modify', this.editEmpTrainForm).then(res => {
+                    console.log(res.data.msg)
                     this.$message.success(res.data.msg)
                     this.editDialogVisible = false
+                    this.init()
                 }).catch(error => {
                     this.init()
                 })
+                this.editDialogVisible = false
+                this.init()
             }
         },
         created() {

@@ -8,20 +8,20 @@
             <div slot='header'></div>
             <!-- card body -->
             <el-table :data='tableData' style='width: 100%'>
-                <el-table-column prop='employee.workID' label='工号' width='120'></el-table-column>
-                <el-table-column prop='employee.name' label='姓名' width='120'></el-table-column>
-                <el-table-column label='时间' width='200'>
+                <el-table-column prop='employee.workID' label='工号'></el-table-column>
+                <el-table-column prop='employee.name' label='姓名'></el-table-column>
+                <el-table-column label='时间'>
                     <template slot-scope='scope'>
                         {{ scope.row.createDate | dateFormat }}
                     </template>
                 </el-table-column>
-                <el-table-column prop='reason' label='原因' width='120'>
+                <el-table-column prop='reason' label='原因'>
                 </el-table-column>
-                <el-table-column prop='remark' label='奖惩级别' width='120'>
+                <el-table-column prop='remark' label='奖惩级别'>
                 </el-table-column>
-                <el-table-column prop='point' label='分数' width='120'>
+                <el-table-column prop='point' label='分数'>
                 </el-table-column>
-                <el-table-column label='操作' width='250'>
+                <el-table-column label='操作'>
                     <template slot-scope='scope'>
                         <el-button
                                 icon='el-icon-edit'
@@ -31,22 +31,33 @@
                                 @click='showEdit(scope.row)'
                         >编辑
                         </el-button>
-                        <el-popconfirm
-                                confirm-button-text='好的'
-                                cancel-button-text='不用了'
-                                icon='el-icon-info'
-                                icon-color='red'
-                                title='这是一段内容确定删除吗？'
-                                @confirm='del(scope.row.id)'
-                        >
-                            <el-button
-                                    type='danger'
-                                    icon='el-icon-delete'
-                                    size='mini'
-                                    slot='reference'
-                            >删除
-                            </el-button>
-                        </el-popconfirm>
+                        <el-button
+                                icon='el-icon-edit'
+                                size='mini'
+                                type='info'
+                                style='margin-right: 10px;'
+                                @click='del(scope.row.id)'
+                        >删除
+                        </el-button>
+<!--                        <el-popconfirm-->
+<!--                                confirm-button-text='好的'-->
+<!--                                cancel-button-text='不用了'-->
+<!--                                icon='el-icon-info'-->
+<!--                                icon-color='red'-->
+<!--                                title='这是一段内容确定删除吗？'-->
+<!--                                @confirm='del(scope.row.id)'-->
+<!--                        >-->
+<!--                            <el-button-->
+<!--                                    type='danger'-->
+<!--                                    icon='el-icon-delete'-->
+<!--                                    size='mini'-->
+<!--                                    slot='reference'-->
+<!--                            >删除-->
+<!--                            </el-button>-->
+<!--                        </el-popconfirm>-->
+<!--                        <el-button type="danger" icon="el-icon-delete" size="mini" @click="handleDeleteClick(scope.row)">-->
+<!--                            删除-->
+<!--                        </el-button>-->
                     </template>
                 </el-table-column>
             </el-table>
@@ -233,7 +244,6 @@
                 }).then(res => {
                     this.clearSomething()
                     // this.$message.success(res.msg)
-                    console.log('this.dialogVisible = false')
                     this.dialogVisible = false
                     this.init()
                 })
@@ -269,6 +279,18 @@
             },
             dialogClosed() {
                 this.clearSomething()
+            },
+            handleDeleteClick(row) {
+                MessageBox.confirm('这是一段内容确定删除吗？', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    // 用户点击了确定按钮，执行删除操作
+                    this.del(row.id);
+                }).catch(() => {
+                    // 用户点击了取消按钮，不执行任何操作
+                });
             }
         },
         created() {
