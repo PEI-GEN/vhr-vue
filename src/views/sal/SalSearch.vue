@@ -123,6 +123,16 @@
                 this.init()
             },
             init(t) {
+                const dateTime = new Date();
+                // 提取年、月、日
+                const year = dateTime.getFullYear();
+                const month = String(dateTime.getMonth() + 1).padStart(2, '0');
+                const day = String(dateTime.getDate()).padStart(2, '0');
+
+                // 构造日期字符串
+                const dateString = `${year}-${month}-${day}`;
+                this.searchDate=dateString;
+
                 if (!this.searchDate) return this.$message.warning('时间不能为空!')
                 this.postRequest('/sal/table/' + this.pageNum + '/' + this.pageSize, {
                     workId: this.searchInput,

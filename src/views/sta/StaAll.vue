@@ -4,38 +4,66 @@
 <!--            <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>-->
 <!--            <el-breadcrumb-item>综合信息统计</el-breadcrumb-item>-->
 <!--        </el-breadcrumb>-->
+<!--        <el-card>-->
+<!--            <el-row :gutter='20'>-->
+<!--                <el-col :span='6'>-->
+<!--                    <div>-->
+<!--                        <el-statistic-->
+<!--                                group-separator=','-->
+<!--                                :value='headerData.employeeCount'-->
+<!--                                title='员工人数'-->
+<!--                        ></el-statistic>-->
+<!--                    </div>-->
+<!--                </el-col>-->
+<!--                <el-col :span='6'>-->
+<!--                    <div>-->
+<!--                        <el-statistic title='部门数'>-->
+<!--                            <template slot='formatter'>{{ headerData.departmentCount }}</template>-->
+<!--                        </el-statistic>-->
+<!--                    </div>-->
+<!--                </el-col>-->
+<!--                <el-col :span='6'>-->
+<!--                    <div>-->
+<!--                        <el-statistic-->
+<!--                                group-separator=','-->
+<!--                                decimal-separator='.'-->
+<!--                                :value='headerData.jobLevelCount'-->
+<!--                                title='职位数'-->
+<!--                        >-->
+<!--                        </el-statistic>-->
+<!--                    </div>-->
+<!--                </el-col>-->
+<!--                <el-col :span='6'>-->
+<!--                    <div>-->
+<!--                        <el-statistic :value='headerData.roleCount' title='角色数'></el-statistic>-->
+<!--                    </div>-->
+<!--                </el-col>-->
+<!--            </el-row>-->
+<!--        </el-card>-->
         <el-card>
-            <el-row :gutter='20'>
-                <el-col :span='6'>
+            <el-row :gutter="20">
+                <el-col :span="6">
                     <div>
-                        <el-statistic
-                                group-separator=','
-                                :value='headerData.employeeCount'
-                                title='员工人数'
-                        ></el-statistic>
+                        <p>{{ headerData.employeeCount }}</p>
+                        <p>员工人数</p>
                     </div>
                 </el-col>
-                <el-col :span='6'>
+                <el-col :span="6">
                     <div>
-                        <el-statistic title='部门数'>
-                            <template slot='formatter'>{{ headerData.departmentCount }}</template>
-                        </el-statistic>
+                        <p>{{ headerData.departmentCount }}</p>
+                        <p>部门数</p>
                     </div>
                 </el-col>
-                <el-col :span='6'>
+                <el-col :span="6">
                     <div>
-                        <el-statistic
-                                group-separator=','
-                                decimal-separator='.'
-                                :value='headerData.jobLevelCount'
-                                title='职位数'
-                        >
-                        </el-statistic>
+                        <p>{{ headerData.jobLevelCount }}</p>
+                        <p>职位数</p>
                     </div>
                 </el-col>
-                <el-col :span='6'>
+                <el-col :span="6">
                     <div>
-                        <el-statistic :value='headerData.roleCount' title='角色数'></el-statistic>
+                        <p>{{ headerData.roleCount }}</p>
+                        <p>角色数</p>
                     </div>
                 </el-col>
             </el-row>
@@ -193,7 +221,7 @@
 
 <style scoped>
     .ghCls {
-        width: auto;
+        /*width: auto;*/
         height: 500px;
     }
 

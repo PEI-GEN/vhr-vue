@@ -7,19 +7,19 @@
         <el-card shadow='always' :body-style="{ padding: '20px' }">
             <div slot='header'></div>
             <el-table :data='tableData' style='width: 100%'>
-                <el-table-column prop='employee.name' label='名称' width='90'>
+                <el-table-column prop='employee.name' label='名称'>
                 </el-table-column>
-                <el-table-column prop='reason' label='原因' width='180'>
+                <el-table-column prop='reason' label='原因'>
                 </el-table-column>
-                <el-table-column prop='salary' label='奖罚' width='90'>
+                <el-table-column prop='salary' label='奖罚'>
                 </el-table-column>
-                <el-table-column label='时间' width='200'>
+                <el-table-column label='时间'>
                     <template slot-scope='scope'>
                         {{ scope.row.createDate | dateFormat }}
                     </template>
                 </el-table-column>
-                <el-table-column prop='remark' label='备注' width='350'></el-table-column>
-                <el-table-column label='操作' width='200'>
+                <el-table-column prop='remark' label='备注'></el-table-column>
+                <el-table-column label='操作'>
                     <template slot-scope='scope'>
                         <el-button
                                 type='info'
@@ -29,22 +29,30 @@
                                 style='margin-right: 10px;'
                         >编辑
                         </el-button>
-                        <el-popconfirm
-                                confirm-button-text='好的'
-                                cancel-button-text='不用了'
-                                icon='el-icon-info'
-                                icon-color='red'
-                                title='这是一段内容确定删除吗？'
-                                @confirm='del(scope.row.id)'
-                        >
-                            <el-button
-                                    type='danger'
-                                    icon='el-icon-delete'
-                                    slot='reference'
-                                    size='mini'
-                            >删除
-                            </el-button>
-                        </el-popconfirm>
+                        <el-button
+                                icon='el-icon-edit'
+                                size='mini'
+                                type='info'
+                                style='margin-right: 10px;'
+                                @click='del(scope.row.id)'
+                        >删除
+                        </el-button>
+<!--                        <el-popconfirm-->
+<!--                                confirm-button-text='好的'-->
+<!--                                cancel-button-text='不用了'-->
+<!--                                icon='el-icon-info'-->
+<!--                                icon-color='red'-->
+<!--                                title='这是一段内容确定删除吗？'-->
+<!--                                @confirm='del(scope.row.id)'-->
+<!--                        >-->
+<!--                            <el-button-->
+<!--                                    type='danger'-->
+<!--                                    icon='el-icon-delete'-->
+<!--                                    slot='reference'-->
+<!--                                    size='mini'-->
+<!--                            >删除-->
+<!--                            </el-button>-->
+<!--                        </el-popconfirm>-->
                     </template>
                 </el-table-column>
             </el-table>
@@ -163,6 +171,7 @@
                     this.$message.success(res.data.msg)
                     this.init()
                 })
+                this.init()
             },
             add() {
                 this.putRequest('/per/salary/add/' + this.workId, this.addEmpSalaryForm).then(res => {
@@ -180,6 +189,8 @@
                 }).catch(error => {
                     this.init()
                 })
+                this.editDialogVisible = false
+                this.init()
             }
         },
         created() {

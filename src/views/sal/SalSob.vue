@@ -389,7 +389,7 @@
             editSal(item) {
                 this.refiledData()
                 this.salaryDate = item
-                this.salaryDate.allsalary = ''
+                // this.salaryDate.allsalary = ''
                 this.isEditOrAdd = '修改账套'
                 this.centerDialogVisible = true
             },
@@ -404,6 +404,7 @@
                             this.$message.success(resp.data.msg)
                             this.init()
                         })
+                        this.init()
                     })
                     .catch(() => {
                         this.$message({
@@ -436,6 +437,17 @@
                 this.$refs['salaryDateForm'].validate((valid) => {
                     if (valid) {
                         if (this.isEditOrAdd === '添加账套') {
+                            const dateTime = new Date(this.salaryDate.createDate);
+
+                            // 提取年、月、日
+                            const year = dateTime.getFullYear();
+                            const month = String(dateTime.getMonth() + 1).padStart(2, '0');
+                            const day = String(dateTime.getDate()).padStart(2, '0');
+
+                            // 构造日期字符串
+                            const dateString = `${year}-${month}-${day}`;
+                            this.salaryDate.createDate=dateString;
+
                             this.putRequest('/sal/sob/add', this.salaryDate).then(resp => {
                                 this.$message.success(resp.msg)
                                 if (resp.status === 200) {
@@ -443,13 +455,20 @@
                                     this.init()
                                 }
                             })
+
+                            this.centerDialogVisible = false
+                            this.init()
                         } else {
                             this.putRequest('/sal/sob/modify', this.salaryDate).then(resp => {
-                                this.$message.success(resp.data.msg)
                                 if (resp.data.status === 200) {
+                                    this.$message.success(resp.data.msg)
                                     this.centerDialogVisible = false
                                     this.init()
+                                } else {
+                                    this.$message.error('请求失败')
                                 }
+                                this.centerDialogVisible = false
+                                this.init()
                             })
                         }
                     } else {

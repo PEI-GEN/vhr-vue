@@ -7,17 +7,17 @@
         <el-card shadow='always' :body-style="{ padding: '20px' }">
             <div slot='header'></div>
             <el-table :data='tableData' style='width: 100%'>
-                <el-table-column prop='employee.name' label='员工名称' width='90'>
+                <el-table-column prop='employee.name' label='员工名称'>
                 </el-table-column>
-                <el-table-column prop='trainContent' label='培训内容' width='180'>
+                <el-table-column prop='trainContent' label='培训内容'>
                 </el-table-column>
-                <el-table-column label='时间' width='200'>
+                <el-table-column label='时间'>
                     <template slot-scope='scope'>
                         {{ scope.row.createData | dateFormat }}
                     </template>
                 </el-table-column>
                 <el-table-column prop='remark' label='具体'></el-table-column>
-                <el-table-column label='操作' width='200'>
+                <el-table-column label='操作'>
                     <template slot-scope='scope'>
                         <el-button
                                 type='info'

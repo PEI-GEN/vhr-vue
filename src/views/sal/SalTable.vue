@@ -105,7 +105,7 @@
 <script>
 
     import { formatDate } from '@/utils/MenuUtil'
-    // import { downloadFiles } from '@/assets/js/AjaxUtil'
+    import { downloadFiles } from '@/utils/AjaxUtil'
 
     export default {
         data() {
@@ -120,6 +120,7 @@
         },
         methods: {
             sendSalaryInfo(item) {
+
             },
             printSalaryInfo(item) {
                 if (!this.searchDate) return this.$message.warning('时间不能为空')
@@ -141,9 +142,21 @@
             },
             init(t) {
                 if (!this.searchDate) return this.$message.warning('时间不能为空!')
+
+
+                const dateTime = new Date();
+                // 提取年、月、日
+                const year = dateTime.getFullYear();
+                const month = String(dateTime.getMonth() + 1).padStart(2, '0');
+                const day = String(dateTime.getDate()).padStart(2, '0');
+
+                // 构造日期字符串
+                const dateString = `${year}-${month}-${day}`;
+                this.searchDate=dateString;
+
                 this.postRequest('/sal/table/' + this.pageNum + '/' + this.pageSize, {
                     workId: this.searchInput,
-                    date: this.searchDate
+                    date: dateString
                 }).then(res => {
                     this.tableData = res.obj.list
                     this.total = res.obj.total

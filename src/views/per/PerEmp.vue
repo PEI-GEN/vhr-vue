@@ -23,17 +23,17 @@
             <!-- card body -->
             <el-table :data='tableData' stripe style='width: 100%'>
                 <el-table-column label='#' type='index' width='50'></el-table-column>
-                <el-table-column prop='name' label='姓名' width='100'>
+                <el-table-column prop='name' label='姓名'>
                 </el-table-column>
-                <el-table-column prop='workId' label='工号' width='90'>
+                <el-table-column prop='workId' label='工号'>
                 </el-table-column>
-                <el-table-column prop='idCard' label='身份证号码' width='180'>
+                <el-table-column prop='idCard' label='身份证号码'>
                 </el-table-column>
-                <el-table-column prop='position.name' label='所在部门' width='180'>
+                <el-table-column prop='position.name' label='所在部门'>
                 </el-table-column>
-                <el-table-column prop='jobLevel.name' label='职位' width='180'>
+                <el-table-column prop='jobLevel.name' label='职位'>
                 </el-table-column>
-                <el-table-column label='操作' width='180'>
+                <el-table-column label='操作'>
                     <template slot-scope='scope'>
                         <el-button
                                 type='info'

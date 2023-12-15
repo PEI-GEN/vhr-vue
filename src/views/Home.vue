@@ -160,11 +160,11 @@
             }
         },
         created() {
-            console.log("home的created")
-            const tags = localStorage.getItem('tags');
-            if (tags) {
-                this.$store.commit('setTags', JSON.parse(tags));
-            }
+            // const tags = localStorage.getItem('tags');
+            // if (tags) {
+            //     this.tags = JSON.parse(tags);
+            // }
+            this.tags=this.getTagsFromCookie();
         },
         methods: {
             goChat() {
@@ -433,8 +433,11 @@
                 this.$router.push(tag.path);
                 this.selectedTag = tag;
 
+                this.saveTagsToCookie(this.tags);
+
                 // 更新本地存储
-                localStorage.setItem('tags', JSON.stringify(this.$store.state.tags));
+                // const tags = JSON.stringify(this.tags);
+                // localStorage.setItem('tags', tags);
             },
             handleTagClose(tag) {
                 // this.$store.commit('removeTag', tag);
@@ -454,13 +457,35 @@
                         this.$store.commit('removeTag', tag);
 
                         // 更新本地存储
-                        localStorage.setItem('tags', JSON.stringify(this.$store.state.tags));
+                        // localStorage.setItem('tags', this.tags);
                     } else {
                         alert('第一个标签不能删除');
                     }
                 } else {
                     alert('至少要保留一个标签');
                 }
+            },
+            saveTagsToCookie(tags) {
+                const cookieValue = JSON.stringify(tags);
+                document.cookie = `tags=${cookieValue}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+            },
+            getTagsFromCookie() {
+                const name = 'tags=';
+                const decodedCookie = decodeURIComponent(document.cookie);
+                const cookieArray = decodedCookie.split(';');
+
+                for (let i = 0; i < cookieArray.length; i++) {
+                    let cookie = cookieArray[i];
+                    while (cookie.charAt(0) === ' ') {
+                        cookie = cookie.substring(1);
+                    }
+                    if (cookie.indexOf(name) === 0) {
+                        const cookieValue = cookie.substring(name.length, cookie.length);
+                        return JSON.parse(cookieValue);
+                    }
+                }
+
+                return [];
             }
         }
     }
