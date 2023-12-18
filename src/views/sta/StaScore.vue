@@ -4,48 +4,81 @@
 <!--            <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>-->
 <!--            <el-breadcrumb-item>员工积分统计</el-breadcrumb-item>-->
 <!--        </el-breadcrumb>-->
+<!--        <el-card>-->
+<!--            <el-row :gutter='20'>-->
+<!--                <el-col :span='6'>-->
+<!--                    <div>-->
+<!--                        <el-statistic-->
+<!--                                group-separator=','-->
+<!--                                :value='headerData.allCount'-->
+<!--                                title='奖惩总人数'-->
+<!--                        ></el-statistic>-->
+<!--                    </div>-->
+<!--                </el-col>-->
+<!--                <el-col :span='6'>-->
+<!--                    <div>-->
+<!--                        <el-statistic title='奖惩人数比'>-->
+<!--                            <template slot='formatter'>{{ headerData.rewardCount + '/' + headerData.punishmentCount }}</template>-->
+<!--                        </el-statistic>-->
+<!--                    </div>-->
+<!--                </el-col>-->
+<!--                <el-col :span='6'>-->
+<!--                    <div>-->
+<!--                        <el-statistic-->
+<!--                                group-separator=','-->
+<!--                                decimal-separator='.'-->
+<!--                                :value='headerData.rewardCount'-->
+<!--                                title='奖励人数'-->
+<!--                        >-->
+<!--                            <template slot='prefix'>-->
+<!--                                <i class='el-icon-s-flag' style='color: red'></i>-->
+<!--                            </template>-->
+<!--                            <template slot='suffix'>-->
+<!--                                <i class='el-icon-s-flag' style='color: blue'></i>-->
+<!--                            </template>-->
+<!--                        </el-statistic>-->
+<!--                    </div>-->
+<!--                </el-col>-->
+<!--                <el-col :span='6'>-->
+<!--                    <div>-->
+<!--                        <el-statistic :value='headerData.punishmentCount' title='惩罚人数'></el-statistic>-->
+<!--                    </div>-->
+<!--                </el-col>-->
+<!--            </el-row>-->
+<!--        </el-card>-->
+
         <el-card>
-            <el-row :gutter='20'>
-                <el-col :span='6'>
+            <el-row :gutter="20">
+                <el-col :span="6">
                     <div>
-                        <el-statistic
-                                group-separator=','
-                                :value='headerData.allCount'
-                                title='奖惩总人数'
-                        ></el-statistic>
+                        <p>{{ headerData.allCount }}</p>
+                        <p>奖惩总人数</p>
                     </div>
                 </el-col>
-                <el-col :span='6'>
+                <el-col :span="6">
                     <div>
-                        <el-statistic title='奖惩人数比'>
-                            <template slot='formatter'>{{ headerData.rewardCount + '/' + headerData.punishmentCount }}</template>
-                        </el-statistic>
+                        <p>{{ headerData.rewardCount }}/{{ headerData.punishmentCount }}</p>
+                        <p>奖惩人数比</p>
                     </div>
                 </el-col>
-                <el-col :span='6'>
+                <el-col :span="6">
                     <div>
-                        <el-statistic
-                                group-separator=','
-                                decimal-separator='.'
-                                :value='headerData.rewardCount'
-                                title='奖励人数'
-                        >
-                            <template slot='prefix'>
-                                <i class='el-icon-s-flag' style='color: red'></i>
-                            </template>
-                            <template slot='suffix'>
-                                <i class='el-icon-s-flag' style='color: blue'></i>
-                            </template>
-                        </el-statistic>
+                        <p>
+                            <i class="el-icon-s-flag" style="color: red"></i>{{ headerData.rewardCount }}
+                            <i class="el-icon-s-flag" style="color: blue"></i>
+                        </p>
+                        <p>奖励人数</p>
                     </div>
                 </el-col>
-                <el-col :span='6'>
+                <el-col :span="6">
                     <div>
-                        <el-statistic :value='headerData.punishmentCount' title='惩罚人数'></el-statistic>
+                        <p>{{ headerData.punishmentCount }}</p>
+                        <p>惩罚人数</p>
                     </div>
                 </el-col>
             </el-row>
         </el-card>
+
         <div id='main'></div>
     </div>
 </template>

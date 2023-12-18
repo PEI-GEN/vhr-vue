@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 500px;">
+    <div>
         <el-input
                 placeholder="请输入部门名称进行搜索..."
                 prefix-icon="el-icon-search"
