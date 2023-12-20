@@ -185,7 +185,7 @@ export default {
           name: this.formLabelAlign.name,
           enabled: this.formLabelAlign.enabled
         }).then(res => {
-          this.$message.success(res.data.msg)
+          // this.$message.success(res.data.msg)
           this.manaDialogVisible = false
           this.formLabelAlign.enabled = true
           this.initMana()
@@ -202,15 +202,16 @@ export default {
         type: 'warning'
       })
         .then(() => {
-          this.deleteRequest('/system/basic/department/delete', {
+          this.postRequest('/system/basic/department/delete', {
             parentId: item.parentId,
             parentDepPath: item.depPath
           }).then(res => {
             if (res.data) {
-              this.$message.success(res.data.msg)
+              // this.$message.success(res.data.msg)
               this.initMana()
             }
           })
+          this.initMana()
         })
         .catch(() => {
           this.$message({
@@ -220,12 +221,11 @@ export default {
         })
     },
     changeButton(item) {
-      console.log(12321)
       this.putRequest('/system/basic/department/modify', {
         id: item.id,
         enabled: item.enabled
       }).then(res => {
-        this.$message.success(res.data.msg)
+        // this.$message.success("成功")
         this.initMana()
         this.initEnabled()
       })
@@ -244,8 +244,8 @@ export default {
         this.putRequest('/system/basic/department/add', this.formLabelAlignSecond).then(
           res => {
             console.log(res)
-            if (res.data.status === 200) {
-              this.$message.success(res.data.msg)
+            if (res.status === 200) {
+              // this.$message.success(res.msg)
               this.formLabelAlignSecond.childrenName = ''
               this.dialogVisibleSecond = false
               this.formLabelAlignSecond.childrenEnabled = true

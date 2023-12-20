@@ -109,7 +109,7 @@ export default {
       this.putRequest('/system/basic/job/add', {
         name: this.addJobValue
       }).then(res => {
-        this.$message.success(res.data.msg)
+        // this.$message.success(res.data.msg)
         this.initPos()
         this.addJobValue = ''
       })
@@ -142,7 +142,7 @@ export default {
         return this.$message('删除取消！')
       }
       this.deleteRequest('/system/basic/job/delete/' + job.id).then(res => {
-        this.$message.success(res.data.msg)
+        // this.$message.success(res.data.msg)
         this.initPos()
       })
     },
@@ -151,7 +151,7 @@ export default {
         if (valid) {
           this.putRequest('/system/basic/job/modify', this.posRuleForm).then(
             res => {
-              this.$message.success(res.data.msg)
+              // this.$message.success(res.data.msg)
               this.initPos()
               this.dialogVisible = false
             }
