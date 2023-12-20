@@ -26,9 +26,9 @@
       >
       <el-table-column type='selection' width='55'></el-table-column>
       <el-table-column prop='id' label='编号' width='50'></el-table-column>
-      <el-table-column prop='name' label='职位名称' width='150'>
+      <el-table-column prop='name' label='职位名称'>
       </el-table-column>
-      <el-table-column prop='createdate' label='创建时间' width='250'>
+      <el-table-column prop='createdate' label='创建时间'>
         <template slot-scope='scope'>
           {{ scope.row.createDate}}
         </template>

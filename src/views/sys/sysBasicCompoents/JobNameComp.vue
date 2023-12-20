@@ -142,7 +142,7 @@ export default {
           name: this.jobNameValue,
           titleLevel: this.jobNameLevelValue
         }).then(res => {
-          this.$message.success(res.data.msg)
+          // this.$message.success(res.data.msg)
           this.initJobName()
           this.jobNameValue = ''
           this.jobNameLevelValue = ''
@@ -165,7 +165,7 @@ export default {
       })
         .then(() => {
           this.deleteRequest('/system/basic/jobName/delete/' + id).then(res => {
-            this.$message.success(res.data.msg)
+            // this.$message.success(res.data.msg)
             this.initJobName()
           })
         })
@@ -183,7 +183,7 @@ export default {
           '/system/basic/jobName/modify',
           this.jobNameValidateForm
         ).then(res => {
-          this.$message.success(res.data.msg)
+          // this.$message.success(res.data.msg)
           this.dialogVisible = false
           this.initJobName()
         })

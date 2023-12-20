@@ -41,7 +41,7 @@
         <el-table :data='manageDataSecond' stripe style='margin-top: 15px;'>
           <el-table-column prop='id' label='部门编号' width='180'>
           </el-table-column>
-          <el-table-column prop='name' label='部门名称' width='180'>
+          <el-table-column prop='name' label='部门名称'>
           </el-table-column>
           <el-table-column label='状态(关闭/开启)'>
             <template slot-scope='scope'>
