@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import {
+    Calendar,
+    Carousel,
+    CarouselItem,
     Divider,
     Drawer,
     Button,
@@ -58,6 +61,9 @@ import echarts from '@/utils/echarts'
 
 Vue.prototype.$echarts = echarts
 Vue.prototype.$ELEMENT = {size: 'small', zIndex: 3000};
+Vue.use(Calendar);
+Vue.use(Carousel);
+Vue.use(CarouselItem);
 Vue.use(Switch);
 Vue.use(Drawer);
 Vue.use(Divider);

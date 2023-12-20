@@ -131,8 +131,16 @@
 
 
                     <div class="homeWelcome" v-if="this.$router.currentRoute.path=='/home'">
-                        欢迎来到微人事！
+                        欢迎来到昆山农商银行！
+                        <el-carousel :interval="4000" type="card" height="200px">
+                            <el-carousel-item v-for="item in imageUrl" :key="item">
+                                <img :src="item.url" alt="" style="max-width: 100%;"/>
+                            </el-carousel-item>
+                        </el-carousel>
+                        <el-calendar v-model="value">
+                        </el-calendar>
                     </div>
+
                     <router-view class="homeRouterView"/>
                 </el-main>
             </el-container>
@@ -148,7 +156,14 @@
                 // user: JSON.parse(window.sessionStorage.getItem("user"))
                 drawer: false,
                 direction: "ltr",
-                selectedTag: null
+                selectedTag: null,
+                imageUrl: [
+                    { url: "../../img/DSC00427.jpg" },
+                    { url: "../../img/DSC00589.jpg" },
+                    { url: "../../img/DSC00742.jpg" },
+                    { url: "../../img/DSC01075.jpg" }
+                ],
+                value: new Date()
             }
         },
         computed: {
@@ -492,6 +507,22 @@
 </script>
 
 <style>
+    .el-carousel__item h3 {
+        color: #475669;
+        font-size: 14px;
+        opacity: 0.75;
+        line-height: 200px;
+        margin: 0;
+    }
+
+    .el-carousel__item:nth-child(2n) {
+        background-color: #99a9bf;
+    }
+
+    .el-carousel__item:nth-child(2n+1) {
+        background-color: #d3dce6;
+    }
+
     .scrollbar {
         height: 100%;
     }
@@ -554,10 +585,11 @@
 
     .homeWelcome {
         text-align: center;
-        font-size: 30px;
+        font-size: 20px;
         font-family: 华文行楷;
         color: #000000;
-        padding-top: 50px;
+        padding-top: 0px;
+        padding-bottom: 10px;
     }
 
     .homeHeader {
