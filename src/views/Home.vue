@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <el-container>
+    <div style="height: 100%">
+        <el-container style="height: 100%">
             <el-header class="homeHeader">
                 <a @click="drawer = true" class="menus"><i class="el-icon-s-unfold"></i>系统菜单</a>
                 <el-drawer class="my-drawer"
@@ -13,7 +13,7 @@
                         withHeader="false"
                 >
 
-                    <el-menu @select="handleMenuSelect">
+                    <el-menu class="caidan" @select="handleMenuSelect">
                         <el-submenu index="1">
                             <template slot="title"><i class="el-icon-user-solid"></i>员工资料</template>
                             <el-menu-item index="1-1" >基本资料</el-menu-item>
@@ -74,7 +74,7 @@
                 </el-drawer>
 
 <!--                图片标题-->
-                <a href="#/home" class="title"><img src="../../public/img/tubiao.png"></a>
+                <a href="#/home" class="title"><img src="../../public/img/p2.png" style="height: 50px;width: auto;padding-left: 10px"></a>
 
                 <div style="position: absolute;right: 10px;">
                     <el-button icon="el-icon-chat-dot-square" type="text" style="margin-right: 8px;color: #000000;" size="normal" @click="goChat">chat</el-button>
@@ -130,15 +130,181 @@
                     </el-breadcrumb>
 
 
-                    <div class="homeWelcome" v-if="this.$router.currentRoute.path=='/home'">
-                        欢迎来到昆山农商银行！
-                        <el-carousel :interval="4000" type="card" height="200px">
-                            <el-carousel-item v-for="item in imageUrl" :key="item">
-                                <img :src="item.url" alt="" style="max-width: 100%;"/>
-                            </el-carousel-item>
-                        </el-carousel>
-                        <el-calendar v-model="value">
-                        </el-calendar>
+                    <div style="height: 100%" v-if="this.$router.currentRoute.path=='/home'">
+<!--                        <div class="homeWelcome">-->
+<!--                            欢迎来到人力资源管理系统！-->
+<!--&lt;!&ndash;                            <el-carousel :interval="4000" type="card" height="350px">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <el-carousel-item v-for="item in imageUrl" :key="item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <img :src="item.url" alt="" style="max-width: 100%;"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </el-carousel-item>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </el-carousel>&ndash;&gt;-->
+<!--                        </div>-->
+
+<!--                        日历组件-->
+                        <div class="flex-container" style="display: flex;flex-wrap: wrap;height: 100%;width: 100%">
+<!--                            工作台-->
+                            <div class="left">
+                                <div style="height: 31%">
+                                    <el-card class="user-card" shadow="hover">
+                                        <div slot="header" class="clearfix">
+                                            <span style="font-size: 25px;font-family: 黑体;font-weight: 700;"><span><i class="el-icon-d-caret" style="color: #ff4442"></i>工作台</span></span>
+                                        </div>
+                                        <el-row :gutter="20">
+                                            <el-col class="card1" :span="11">
+                                                <i class="card1-text">姓名：</i>{{ userProfile.name }}
+                                            </el-col>
+                                            <el-col class="card1" style="margin-left: 5%"  :span="11">
+                                                <i class="card1-text">工号：</i>{{ userProfile.employeeId }}
+                                            </el-col>
+                                            <el-col class="card1":span="11">
+                                                <i class="card1-text">部门：</i>{{ userProfile.department }}
+                                            </el-col>
+                                            <el-col class="card1" style="margin-left: 5%"  :span="11">
+                                                <i class="card1-text">职位：</i>{{ userProfile.position }}
+                                            </el-col>
+                                            <el-col class="card1" :span="11">
+                                                <i class="card1-text">入职时间：</i>{{ userProfile.entryDate }}
+                                            </el-col>
+                                        </el-row>
+                                    </el-card>
+                                </div>
+
+    <!--                            职位管理-->
+                                <div style="height: 31%;padding-top: 3%;">
+                                    <el-card class="user-card" shadow="hover">
+                                        <div slot="header" class="clearfix">
+                                            <span style="font-size: 25px;font-family: 黑体;font-weight: 700;"><span><i class="el-icon-d-caret" style="color: #ff4442"></i>人员管理</span></span>
+                                        </div>
+                                        <div class="card2-container">
+                                            <div class="card2">
+                                                <h2 style="color: red">2(个)</h2>
+                                                <h2>编内员工</h2>
+                                            </div>
+                                            <div class="card22">
+                                                <h2 style="color: red">2(个)</h2>
+                                                <h2>外包员工</h2>
+                                            </div>
+                                            <div class="card22">
+                                                <h2 style="color: red">2(个)</h2>
+                                                <h2>试用期员工</h2>
+                                            </div>
+                                            <div class="card2">
+                                                <h2 style="color: red">2(个)</h2>
+                                                <h2>退休员工</h2>
+                                            </div>
+                                        </div>
+
+                                    </el-card>
+                                </div>
+
+                                <div style="height: 31%;padding-top: 3%;">
+                                    <el-card class="user-card" shadow="hover">
+                                        <div slot="header" class="clearfix">
+                                            <span style="font-size: 25px;font-family: 黑体;font-weight: 700;"><span><i class="el-icon-d-caret" style="color: #ff4442"></i>岗位管理</span></span>
+                                        </div>
+                                        <div class="notification">
+                                            <div class="notiglow"></div>
+                                            <div class="notiborderglow"></div>
+                                            <div class="notititle" style="color: #5B89FE;">总岗位数：58个</div>
+                                        </div>
+                                        <div class="notification">
+                                            <div class="notiglow"></div>
+                                            <div class="notiborderglow"></div>
+                                            <div class="notititle" style="color: #55DEB9">编内岗位数：32个</div>
+                                        </div>
+                                        <div class="notification">
+                                            <div class="notiglow"></div>
+                                            <div class="notiborderglow"></div>
+                                            <div class="notititle">外包岗位数：26个</div>
+                                        </div>
+                                    </el-card>
+                                </div>
+                            </div>
+
+
+<!--                             消息通知-->
+                            <div class="right">
+                                <div style="height: 47%">
+                                    <el-card class="user-card" shadow="hover">
+                                        <div slot="header" class="clearfix">
+                                            <span style="font-size: 25px;font-family: 黑体;font-weight: 700;"><span><i class="el-icon-d-caret" style="color: #ff4442"></i>消息通知</span></span>
+                                        </div>
+
+                                        <!-- 消息通知区域 -->
+                                        <div class="notification-content">
+                                            <!-- 第一条消息 -->
+                                            <div class="notification-item">
+                                                <h3 class="notification-title">您有新的消息！</h3>
+                                                <p class="notification-message">这是第1条消息内容的简介。</p>
+                                            </div>
+                                            <!-- 第二条消息 -->
+                                            <div class="notification-item">
+                                                <h3 class="notification-title">又一条新消息！</h3>
+                                                <p class="notification-message">这是第2条消息内容的简介。</p>
+                                            </div>
+                                            <div class="notification-item">
+                                                <h3 class="notification-title">又一条新消息！</h3>
+                                                <p class="notification-message">这是第3条消息内容的简介。</p>
+                                            </div>
+                                            <div class="notification-item">
+                                                <h3 class="notification-title">又一条新消息！</h3>
+                                                <p class="notification-message">这是第4条消息内容的简介。</p>
+                                            </div>
+                                            <div class="notification-item">
+                                                <h3 class="notification-title">又一条新消息！</h3>
+                                                <p class="notification-message">这是第5条消息内容的简介。</p>
+                                            </div>
+                                            <div class="notification-item">
+                                                <h3 class="notification-title">又一条新消息！</h3>
+                                                <p class="notification-message">这是第6条消息内容的简介。</p>
+                                            </div>
+                                            <div class="notification-item">
+                                                <h3 class="notification-title">又一条新消息！</h3>
+                                                <p class="notification-message">这是第7条消息内容的简介。</p>
+                                            </div>
+                                            <div class="notification-item">
+                                                <h3 class="notification-title">又一条新消息！</h3>
+                                                <p class="notification-message">这是第8条消息内容的简介。</p>
+                                            </div>
+                                        </div>
+                                    </el-card>
+                                </div>
+
+                                <div style="height: 48%;padding-top: 3%;">
+                                    <el-card class="user-card" shadow="hover">
+                                        <div slot="header" class="clearfix">
+                                            <span style="font-size: 25px;font-family: 黑体;font-weight: 700;"><span><i class="el-icon-d-caret" style="color: #ff4442"></i>招聘动态</span></span>
+                                        </div>
+                                        <div class="zhaoping-content">
+                                            <div class="zhaoping-card">
+                                                <p>正在招聘职位</p>
+                                                <p><span class="job-count">5</span> 人</p>
+                                            </div>
+                                            <div class="zhaoping-card">
+                                                <p>评选中</p>
+                                                <p><span class="job-count">59</span> 人</p>
+                                            </div>
+                                            <div class="zhaoping-card">
+                                                <p>待入职</p>
+                                                <p><span class="job-count">2</span> 人</p>
+                                            </div>
+                                            <div class="zhaoping-card">
+                                                <p>已入职</p>
+                                                <p><span class="job-count">1</span> 人</p>
+                                            </div>
+                                        </div>
+
+                                    </el-card>
+                                </div>
+                            </div>
+
+<!--                            日历-->
+<!--                            <div class="calendar-container">-->
+<!--                                <el-calendar v-model="value">-->
+<!--                                </el-calendar>-->
+<!--                            </div>-->
+                        </div>
+
                     </div>
 
                     <router-view class="homeRouterView"/>
@@ -163,14 +329,25 @@
                     { url: "../../img/DSC00742.jpg" },
                     { url: "../../img/DSC01075.jpg" }
                 ],
-                value: new Date()
+                value: new Date(),
+                userProfile: {
+                    name: '',
+                    employeeId: '',
+                    department: '系统管理部门',
+                    position: '管理员',
+                    entryDate: '2022-01-01'
+                }
             }
+        },
+        mounted() {
+            this.getUserProfile();
         },
         computed: {
             routes() {
                 return this.$store.state.routes;
             },
             user() {
+                // console(this.$store.state.currentHr);
                 return this.$store.state.currentHr;
             }
         },
@@ -182,6 +359,28 @@
             this.tags=this.getTagsFromCookie();
         },
         methods: {
+            getUserProfile() {
+                // 调用后端接口获取用户信息
+                // 假设我们有一个getUserInfo的API方法
+                // this.getRequest('/userinfo/positions').then(resp => {
+                //     if (resp) {
+                //         this.userProfile = resp;
+                //     }
+                // })
+                // this.getRequest('/hr/info').then(resp => {
+                //     if (resp) {
+                //         this.hr = resp;
+                //         this.hr2 = Object.assign({}, this.hr);
+                //         window.sessionStorage.setItem("user", JSON.stringify(resp));
+                //         this.$store.commit('INIT_CURRENTHR', resp);
+                //     }
+                // })
+                console.log(window.sessionStorage.getItem("user"))
+                var userObject = JSON.parse(window.sessionStorage.getItem("user"));
+                this.userProfile.name=userObject.name;
+                this.userProfile.employeeId=userObject.id;
+
+            },
             goChat() {
                 this.$router.push("/chat");
             },
@@ -507,6 +706,383 @@
 </script>
 
 <style>
+    html, body {
+        height: 100%;
+    }
+
+    .zhaoping-content {
+        height: 100%;
+        display: flex;
+        flex-direction: row; /* 默认值，通常可以省略 */
+        justify-content: space-around; /* 这会在卡片之间添加一些间隔，你可以根据需要调整 */
+        flex-wrap: wrap; /* 如果需要，这可以让卡片在不够空间的情况下换行 */
+    }
+
+    .zhaoping-card {
+        display: flex;
+        flex-direction: column; /* 设置Flexbox方向为垂直 */
+        justify-content: center; /* 垂直居中 */
+        align-items: center; /* 水平居中 */
+        width: 45%;
+        height: 50%;
+        background: rgba(75, 136, 253,0.01);
+        border-radius: 50px;
+        box-shadow: rgba(0, 0, 0, 0.01) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.03) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.01) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(255, 68, 66, 0.09) 0px 4px 2px, rgba(255, 68, 66, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+
+    .zhaoping-card p {
+        margin: 0; /* 移除默认的外边距 */
+        text-align: center; /* 确保文字水平居中 */
+        width: 100%; /* 让 <p> 标签占满整个容器宽度 */
+        font-size: 25px;
+    }
+
+    .job-count {
+        color: red; /* 将数字0的颜色设置为红色 */
+    }
+
+    .notification-content .el-card .el-card__body {
+        height: 100%;
+    }
+
+    .notification-content {
+        max-height: 100%; /* 设置最大高度，确保内容可滚动 */
+        /*padding: 10px 0; !* 添加上下内边距 *!*/
+        overflow-y: auto; /* 当内容超出最大高度时显示滚动条 */
+        padding-bottom: 1px;
+    }
+
+    .notification-item {
+        border-bottom: 1px solid #ebebeb; /* 添加底部边框作为分隔线 */
+        padding-bottom: 15px; /* 调整底部内边距，以便分隔线和文本之间有空间 */
+        margin-bottom: 15px; /* 保持原有的底部间距 */
+    }
+
+    .notification-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 0 5px 0;
+    }
+
+    .notification-message {
+        font-size: 14px;
+        margin: 0;
+        opacity: 0.75; /* 设置文字透明度 */
+    }
+
+    /* 最后一条消息没有底部间距 */
+    .notification-item:last-child {
+        border-bottom: none; /* 最后一项不显示分隔线 */
+        padding-bottom: 0; /* 最后一项不需要底部内边距 */
+    }
+
+    /* 自定义滚动条的整体样式 */
+    ::-webkit-scrollbar {
+        width: 8px; /* 设置滚动条的宽度 */
+        background-color: #F5F5F5; /* 设置滚动条的背景颜色 */
+    }
+
+    /* 滚动条滑块的样式 */
+    ::-webkit-scrollbar-thumb {
+        border-radius: 4px; /* 设置滑块的圆角 */
+        background-color: #ff4442; /* 设置滑块的颜色，可调整为网站主题颜色 */
+        border: 2px solid #F5F5F5; /* 设置滑块边框和背景颜色相同，创建“边距”效果 */
+    }
+
+    /* 滚动条轨道的样式 */
+    ::-webkit-scrollbar-track {
+        border-radius: 4px; /* 设置轨道的圆角 */
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2); /* 在轨道内添加阴影，增加深度感 */
+        background-color: #F5F5F5; /* 设置轨道的背景颜色 */
+    }
+
+
+    .notification {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 增加此行以垂直居中 */
+        align-items: center; /* 增加此行以水平居中 */
+        isolation: isolate;
+        position: relative;
+        width: 95%;
+        height: 30%;
+        background: #ffacac;
+        border-radius: 1rem;
+        overflow: hidden;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 16px;
+        --gradient: linear-gradient(to bottom, #fd134a, #af1414, #4b0505);
+        --color: #e23136;
+        margin-bottom: 1%;
+    }
+
+    .notification:before {
+        position: absolute;
+        content: "";
+        inset: 0.0625rem;
+        border-radius: 0.9375rem;
+        background: #ffffff;
+        z-index: 2
+    }
+
+    .notification:after {
+        position: absolute;
+        content: "";
+        width: 2.25rem;
+        inset: 0.65rem auto 0.65rem 0.5rem;
+        border-radius: 8.125rem;
+        background: var(--gradient);
+        transition: transform 300ms ease;
+        z-index: 4;
+    }
+
+    .notification:hover:after {
+        transform: translateX(0.15rem)
+    }
+
+    .notititle {
+        color: var(--color);
+        padding: 0.8rem 0.25rem 0.4rem 1.25rem;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: transform 300ms ease;
+        z-index: 5;
+    }
+
+    .notification:hover .notititle {
+        transform: translateX(0.15rem)
+    }
+
+    .notification:hover .notibody {
+        transform: translateX(0.25rem)
+    }
+
+    .notiglow,
+    .notiborderglow {
+        position: absolute;
+        width: 20rem;
+        height: 20rem;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(circle closest-side at center, white, transparent);
+        opacity: 0;
+        transition: opacity 300ms ease;
+    }
+
+    .notiglow {
+        z-index: 3;
+    }
+
+    .notiborderglow {
+        z-index: 1;
+    }
+
+    .notification:hover .notiglow {
+        opacity: 0.1
+    }
+
+    .notification:hover .notiborderglow {
+        opacity: 0.1
+    }
+
+    .note {
+        color: var(--color);
+        position: fixed;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 0.9rem;
+        width: 75%;
+    }
+
+    .card2-container {
+        height: 100%;
+        display: flex;
+        flex-direction: row; /* 默认值，通常可以省略 */
+        justify-content: space-around; /* 这会在卡片之间添加一些间隔，你可以根据需要调整 */
+        flex-wrap: wrap; /* 如果需要，这可以让卡片在不够空间的情况下换行 */
+    }
+
+
+    .el-card__body {
+        height: 75%;
+    }
+
+    .card2 .red-text {
+        color: #101010 !important;
+    }
+
+
+    .card2 {
+        width: 20%;
+        height: 95%;
+        background: #f7faff;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 20px;
+    }
+
+    .card2 h2 {
+        z-index: 1;
+        color: #000000;
+        font-size: 20px;
+    }
+
+    .card2::before {
+        content: '';
+        position: absolute;
+        width: 50px;
+        background-image: linear-gradient(180deg, rgb(255, 66, 43), rgb(255, 66, 43));
+        height: 130%;
+        animation: rotBGimg 3s linear infinite;
+        transition: all 0.2s linear;
+    }
+
+    /*@keyframes rotBGimg {*/
+    /*    from {*/
+    /*        transform: rotate(0deg);*/
+    /*    }*/
+
+    /*    to {*/
+    /*        transform: rotate(10deg);*/
+    /*    }*/
+    /*}*/
+
+    .card2::after {
+        content: '';
+        position: absolute;
+        background: #ffffff;
+        inset: 5px;
+        border-radius: 15px;
+    }
+    /* .card:hover:before {
+      background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);
+      animation: rotBGimg 3.5s linear infinite;
+    } */
+
+
+    .card22 .red-text {
+        color: #101010 !important;
+    }
+
+
+    .card22 {
+        width: 20%;
+        height: 95%;
+        background: #f7faff;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 20px;
+    }
+
+    .card22 h2 {
+        z-index: 1;
+        color: #000000;
+        font-size: 20px;
+    }
+
+    .card22::before {
+        content: '';
+        position: absolute;
+        width: 50px;
+        background-image: linear-gradient(180deg, rgb(89, 138, 254), rgb(89, 138, 254));
+        height: 130%;
+        animation: rotBGimg 3s linear infinite;
+        transition: all 0.2s linear;
+    }
+
+    .card22::after {
+        content: '';
+        position: absolute;
+        background: #ffffff;
+        inset: 5px;
+        border-radius: 15px;
+    }
+
+
+
+    .card1-text {
+        color: rgba(220, 64, 62, 0.8);
+        font-style: normal;
+    }
+
+    .card1 {
+        padding: 2%;
+        background-color: rgba(245, 246, 247, 0.99);
+        border-radius: 15px; /* 边框圆角 */
+        margin-top: 5px;
+    }
+
+    #app {
+        height: 100%;
+    }
+
+
+    .flex-container {
+        display: flex;
+    }
+
+    .left {
+        flex: 48;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .right {
+        flex: 50;
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+    }
+
+    .el-card__header {
+        padding: 5px 5px !important;
+        border-bottom: 2px;
+    }
+
+    .user-card {
+        height: 100%;
+        margin: auto;
+        font-family: normal;
+        font-size: 17px;
+        box-shadow: 0 0 10px rgb(215, 174, 179); /* 阴影效果，可以根据需要调整参数 */
+        border: 1px solid #ddd; /* 边框样式，可以根据需要调整颜色和宽度 */
+
+        padding: 10px; /* 可选，为了增加内部空白 */
+        border-radius: 5px; /* 可选，为了使边框具有圆角效果 */
+    }
+
+    .calendar-container {
+        display: flex;
+        max-width: 49%;
+        font-family: normal;
+        font-size: 15px;
+        box-shadow: 0 0 20px rgb(246, 232, 234); /* 阴影效果，可以根据需要调整参数 */
+        border: 1px solid #ddd; /* 边框样式，可以根据需要调整颜色和宽度 */
+        padding: 10px; /* 可选，为了增加内部空白 */
+        border-radius: 5px; /* 可选，为了使边框具有圆角效果 */
+    }
+
+    .calendar-container2 {
+        display: flex;
+        max-width: 49%;
+        font-family: normal;
+        font-size: 15px;
+        box-shadow: 0 0 20px rgb(246, 232, 234); /* 阴影效果，可以根据需要调整参数 */
+        border: 1px solid #ddd; /* 边框样式，可以根据需要调整颜色和宽度 */
+        padding: 10px; /* 可选，为了增加内部空白 */
+        border-radius: 5px; /* 可选，为了使边框具有圆角效果 */
+        margin-left: 1%;
+    }
+
     .el-carousel__item h3 {
         color: #475669;
         font-size: 14px;
@@ -577,6 +1153,11 @@
     .menus {
         color: #ff4040;
         text-decoration: none;
+        font-weight: 700;
+    }
+
+    .caidan {
+        font-weight: 700;
     }
 
     .homeRouterView {
@@ -585,11 +1166,17 @@
 
     .homeWelcome {
         text-align: center;
-        font-size: 20px;
+        font-size: 25px;
         font-family: 华文行楷;
         color: #000000;
         padding-top: 0px;
         padding-bottom: 10px;
+
+        box-shadow: 0 0 20px rgb(246, 232, 234); /* 阴影效果，可以根据需要调整参数 */
+        border: 1px solid #ddd; /* 边框样式，可以根据需要调整颜色和宽度 */
+        padding: 10px; /* 可选，为了增加内部空白 */
+        border-radius: 5px; /* 可选，为了使边框具有圆角效果 */
+        margin-bottom: 10px;
     }
 
     .homeHeader {
