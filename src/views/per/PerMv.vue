@@ -28,14 +28,14 @@
                                 icon='el-icon-edit'
                                 @click='showEdit(scope.row)'
                                 size='mini'
-                                style='margin-right: 10px;'
+                                style='margin-right: 10px;background-color: #ff624e;border-color: white;'
                         >编辑
                         </el-button>
                         <el-button
                                 icon='el-icon-edit'
                                 size='mini'
                                 type='info'
-                                style='margin-right: 10px;'
+                                style='margin-right: 10px;background-color: #e58686;border-color: white;'
                                 @click='del(scope.row.id)'
                         >删除
                         </el-button>

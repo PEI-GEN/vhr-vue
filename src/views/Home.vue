@@ -787,6 +787,7 @@
         border-radius: 4px; /* 设置滑块的圆角 */
         background-color: #ff4442; /* 设置滑块的颜色，可调整为网站主题颜色 */
         border: 2px solid #F5F5F5; /* 设置滑块边框和背景颜色相同，创建“边距”效果 */
+        opacity: 0.5;
     }
 
     /* 滚动条轨道的样式 */
@@ -1162,6 +1163,7 @@
 
     .homeRouterView {
         margin-top: 10px;
+        height: 100%;
     }
 
     .homeWelcome {

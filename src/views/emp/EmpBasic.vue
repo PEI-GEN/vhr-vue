@@ -8,10 +8,10 @@
                               @clear="initEmps"
                               style="width: 350px;margin-right: 10px" v-model="keyword"
                               @keydown.enter.native="initEmps" :disabled="showAdvanceSearchView"></el-input>
-                    <el-button icon="el-icon-search" type="primary" @click="initEmps" :disabled="showAdvanceSearchView">
+                    <el-button class="common-red" icon="el-icon-search" type="primary" @click="initEmps" :disabled="showAdvanceSearchView">
                         搜索
                     </el-button>
-                    <el-button type="primary" @click="showAdvanceSearchView = !showAdvanceSearchView">
+                    <el-button class="common-red" type="primary" @click="showAdvanceSearchView = !showAdvanceSearchView">
                         <i :class="showAdvanceSearchView?'fa fa-angle-double-up':'fa fa-angle-double-down'"
                            aria-hidden="true"></i>
                         高级搜索
@@ -26,14 +26,14 @@
                             :disabled="importDataDisabled"
                             style="display: inline-flex;margin-right: 8px"
                             action="/employee/basic/import">
-                        <el-button :disabled="importDataDisabled" type="success" :icon="importDataBtnIcon">
+                        <el-button class="dao-red" :disabled="importDataDisabled" type="success" :icon="importDataBtnIcon">
                             {{importDataBtnText}}
                         </el-button>
                     </el-upload>
-                    <el-button type="success" @click="exportData" icon="el-icon-download">
+                    <el-button class="dao-red" type="success" @click="exportData" icon="el-icon-download">
                         导出数据
                     </el-button>
-                    <el-button type="primary" icon="el-icon-plus" @click="showAddEmpView">
+                    <el-button class="common-red" type="primary" icon="el-icon-plus" @click="showAddEmpView">
                         添加用户
                     </el-button>
                 </div>
@@ -135,7 +135,7 @@
                 </div>
             </transition>
         </div>
-        <div style="margin-top: 10px">
+        <div style="margin-top: 10px;height: 90%">
             <el-table
                     :data="emps"
                     stripe
@@ -144,7 +144,7 @@
                     element-loading-text="正在加载..."
                     element-loading-spinner="el-icon-loading"
                     element-loading-background="rgba(0, 0, 0, 0.8)"
-                    style="width: 100%">
+                    style="width: 100%;height: 100%">
                 <el-table-column
                         type="selection"
                         width="55">
@@ -154,7 +154,7 @@
                         fixed
                         align="left"
                         label="姓名"
-                        width="90">
+                        height="90">
                 </el-table-column>
                 <el-table-column
                         prop="workID"
@@ -296,12 +296,13 @@
                         label="操作">
                     <template slot-scope="scope">
                         <el-button @click="showEditEmpView(scope.row)" style="padding: 3px" size="mini">编辑</el-button>
-                        <el-button style="padding: 3px" size="mini" type="primary">查看高级资料</el-button>
-                        <el-button @click="deleteEmp(scope.row)" style="padding: 3px" size="mini" type="danger">删除
+                        <el-button class="common-red" style="padding: 3px" size="mini" type="primary">查看高级资料</el-button>
+                        <el-button class="delete-red" @click="deleteEmp(scope.row)" style="padding: 3px" size="mini" type="danger">删除
                         </el-button>
                     </template>
                 </el-table-column>
             </el-table>
+
             <div style="display: flex;justify-content: flex-end">
                 <el-pagination
                         background
@@ -915,6 +916,42 @@
 </script>
 
 <style>
+    .common-red {
+        background-color: #ff624e;
+        border-color: white;
+    }
+
+    .delete-red {
+        background-color: #e58686;
+        border-color: white;
+    }
+
+    .dao-red {
+        background-color: #e58686;
+        border-color: white;
+    }
+
+
+
+    .el-table--scrollable-x .el-table__body-wrapper {
+        height: 96%;
+    }
+
+
+
+    /*!* 覆盖Element UI表格行的高度设置 *!*/
+    /*.el-table .el-table__row {*/
+    /*    height: auto !important; !* 设置行高为自动，以适应内容 *!*/
+    /*    min-height: 30px; !* 可以设置一个最小高度，确保行不会太低 *!*/
+    /*}*/
+
+    /*!* 调整单元格内部内容的垂直对齐方式 *!*/
+    /*.el-table .cell {*/
+    /*    display: flex;*/
+    /*    align-items: center; !* 使单元格内容垂直居中 *!*/
+    /*    word-break: break-all; !* 防止内容溢出单元格 *!*/
+    /*}*/
+
     /* 可以设置不同的进入和离开动画 */
     /* 设置持续时间和动画函数 */
     .slide-fade-enter-active {

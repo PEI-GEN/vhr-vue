@@ -47,12 +47,14 @@
                                 type='info'
                                 size='mini'
                                 @click='editSal(scope.row)'
+                                style="background-color: #ff624e;border-color: white;"
                         >编辑
                         </el-button>
                         <el-button
                                 icon='el-icon-delete'
                                 type='danger'
                                 size='mini'
+                                style='background-color: #e58686;border-color: white;'
                                 @click='deleteSal(scope.row.id)'
                         >删除
                         </el-button>
@@ -63,7 +65,7 @@
                     type='warning'
                     size='default'
                     @click='deleteMany'
-                    style='margin-top: 15px;'
+                    style='margin-top: 15px;opacity: 0.8'
             >批量删除
             </el-button
             >
