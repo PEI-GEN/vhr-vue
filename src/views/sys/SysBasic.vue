@@ -4,7 +4,7 @@
 <!--            <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>-->
 <!--            <el-breadcrumb-item>基本资料设置</el-breadcrumb-item>-->
 <!--        </el-breadcrumb>-->
-        <el-card shadow='always'>
+        <el-card shadow='always' style="height: 100%">
             <el-tabs
                     v-model='activeName'
                     type='border-card'
@@ -20,11 +20,11 @@
                 <el-tab-pane label='职称管理' name='jobName'>
                     <JobNameComp :jobNameTableData='jobNameTableData' :initJobName='initJobName'></JobNameComp>
                 </el-tab-pane>
-                <el-tab-pane label='奖惩规则' name='reward'
-                >
-                    <RewardComp></RewardComp
-                    >
-                </el-tab-pane>
+<!--                <el-tab-pane label='奖惩规则' name='reward'-->
+<!--                >-->
+<!--                    <RewardComp></RewardComp-->
+<!--                    >-->
+<!--                </el-tab-pane>-->
                 <el-tab-pane label='权限组' name='rights'
                 >
                     <RightsComp

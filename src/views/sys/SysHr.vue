@@ -13,9 +13,9 @@
                                icon="el-icon-delete" @click="deleteHr(hr)"></el-button>
                 </div>
                 <div>
-                    <div class="img-container">
-                        <img :src="hr.userface" :alt="hr.name" :title="hr.name" class="userface-img">
-                    </div>
+<!--                    <div class="img-container">-->
+<!--                        <img :src="hr.userface" :alt="hr.name" :title="hr.name" class="userface-img">-->
+<!--                    </div>-->
                     <div class="userinfo-container">
                         <div>用户名：{{hr.name}}</div>
                         <div>手机号码：{{hr.phone}}</div>

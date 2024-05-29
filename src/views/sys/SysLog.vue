@@ -4,49 +4,49 @@
 <!--            <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>-->
 <!--            <el-breadcrumb-item>操作日志管理</el-breadcrumb-item>-->
 <!--        </el-breadcrumb>-->
-        <el-card>
+        <el-card style="height: 15%">
             <div>
-                <el-row :gutter='20'>
-                    <el-col :span='6'>
-                        <div>
-                            <el-statistic
-                                    group-separator=','
-                                    :precision='2'
-                                    :value='headerData.operatorLogCount'
-                                    title='总操作次数'
-                            ></el-statistic>
-                        </div>
+                <el-row :gutter="20">
+                    <el-col :span="6">
+                        <el-card>
+                            <div>
+                                <span>总操作次数</span>
+                                <div style="font-size: 20px; font-weight: bold;">
+<!--                                    {{ headerData.operatorLogCount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) }}-->
+                                    {{ headerData.operatorLogCount}}
+                                </div>
+                            </div>
+                        </el-card>
                     </el-col>
-                    <el-col :span='6'>
-                        <div>
-                            <el-statistic
-                                    title='最近操作时间'>
-                                <template slot='formatter'>
-                                    {{ headerData.createDate }}
-                                </template>
-                            </el-statistic>
-                        </div>
+                    <el-col :span="6">
+                        <el-card>
+                            <div>
+                                <span>最近操作时间</span>
+                                <div style="font-size: 20px; font-weight: bold;">
+                                    {{ formattedCreateDate  }}
+                                </div>
+                            </div>
+                        </el-card>
                     </el-col>
-                    <el-col :span='6'>
-                        <div>
-                            <el-statistic
-                                    title='操作人'
-                            >
-                                <template slot='formatter'>
+                    <el-col :span="6">
+                        <el-card>
+                            <div>
+                                <span>操作人</span>
+                                <div style="font-size: 20px; font-weight: bold;">
                                     {{ headerData.operatorName }}
-                                </template>
-                            </el-statistic>
-                        </div>
+                                </div>
+                            </div>
+                        </el-card>
                     </el-col>
-                    <el-col :span='6'>
-                        <div>
-                            <el-statistic
-                                    title='内容'>
-                                <template slot='formatter'>
+                    <el-col :span="6">
+                        <el-card>
+                            <div>
+                                <span>内容</span>
+                                <div style="font-size: 20px; font-weight: bold;">
                                     {{ headerData.content }}
-                                </template>
-                            </el-statistic>
-                        </div>
+                                </div>
+                            </div>
+                        </el-card>
                     </el-col>
                 </el-row>
             </div>
@@ -128,6 +128,18 @@
         },
         created() {
             this.init()
+        },
+        computed: {
+            formattedCreateDate() {
+                const date = new Date(this.headerData.createDate);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const hours = String(date.getHours()).padStart(2, '0');
+                const minutes = String(date.getMinutes()).padStart(2, '0');
+                const seconds = String(date.getSeconds()).padStart(2, '0');
+                return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            }
         }
     }
 </script>

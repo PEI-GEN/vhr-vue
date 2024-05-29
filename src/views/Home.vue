@@ -18,6 +18,7 @@
                             <template slot="title"><i class="el-icon-user-solid"></i>员工资料</template>
                             <el-menu-item index="1-1" >基本资料</el-menu-item>
                             <el-menu-item index="1-2" >高级资料</el-menu-item>
+                            <el-menu-item index="1-3" >简历导入</el-menu-item>
                         </el-submenu>
 
                         <el-divider class="my-divider"></el-divider>
@@ -62,10 +63,10 @@
                         <el-submenu index="5">
                             <template slot="title"><i class="el-icon-setting"></i>系统管理</template>
                             <el-menu-item index="5-1">基础信息设置</el-menu-item>
-                            <el-menu-item index="5-2">系统管理</el-menu-item>
+<!--                            <el-menu-item index="5-2">系统管理</el-menu-item>-->
                             <el-menu-item index="5-3">操作日志管理</el-menu-item>
                             <el-menu-item index="5-4">操作员管理</el-menu-item>
-                            <el-menu-item index="5-5">备份恢复数据库</el-menu-item>
+<!--                            <el-menu-item index="5-5">备份恢复数据库</el-menu-item>-->
 <!--                            <el-menu-item index="5-6">初始化数据库</el-menu-item>-->
                         </el-submenu>
 
@@ -429,6 +430,17 @@
                         tag = {
                             name: '高级资料',
                             path: '/emp/adv'
+                        };
+                        this.selectedTag = tag;
+                        this.handleTagClick(tag);
+                        this.$store.commit('addTag', tag);
+                        break;
+                    case '1-3':
+                        console.log('/emp/resume')
+                        this.$router.push('/emp/resume');
+                        tag = {
+                            name: '简历导入',
+                            path: '/emp/resume'
                         };
                         this.selectedTag = tag;
                         this.handleTagClick(tag);
