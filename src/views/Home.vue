@@ -24,8 +24,8 @@
 
                         <el-submenu index="2">
                             <template slot="title"><i class="el-icon-s-check"></i>人事管理</template>
-                            <el-menu-item class="my-menu-item" index="2-1">员工资料</el-menu-item>
-                            <el-divider class="my-divider2"></el-divider>
+<!--                            <el-menu-item class="my-menu-item" index="2-1">员工资料</el-menu-item>-->
+<!--                            <el-divider class="my-divider2"></el-divider>-->
                             <el-menu-item index="2-2">员工奖惩</el-menu-item>
                             <el-divider class="my-divider2"></el-divider>
                             <el-menu-item index="2-3">员工培训</el-menu-item>
@@ -66,7 +66,7 @@
                             <el-menu-item index="5-3">操作日志管理</el-menu-item>
                             <el-menu-item index="5-4">操作员管理</el-menu-item>
                             <el-menu-item index="5-5">备份恢复数据库</el-menu-item>
-                            <el-menu-item index="5-6">初始化数据库</el-menu-item>
+<!--                            <el-menu-item index="5-6">初始化数据库</el-menu-item>-->
                         </el-submenu>
 
 
@@ -177,19 +177,19 @@
                                         </div>
                                         <div class="card2-container">
                                             <div class="card2">
-                                                <h2 style="color: red">2(个)</h2>
+                                                <h2 style="color: red">23(个)</h2>
                                                 <h2>编内员工</h2>
                                             </div>
                                             <div class="card22">
-                                                <h2 style="color: red">2(个)</h2>
+                                                <h2 style="color: red">15(个)</h2>
                                                 <h2>外包员工</h2>
                                             </div>
                                             <div class="card22">
-                                                <h2 style="color: red">2(个)</h2>
+                                                <h2 style="color: red">4(个)</h2>
                                                 <h2>试用期员工</h2>
                                             </div>
                                             <div class="card2">
-                                                <h2 style="color: red">2(个)</h2>
+                                                <h2 style="color: red">18(个)</h2>
                                                 <h2>退休员工</h2>
                                             </div>
                                         </div>
@@ -234,37 +234,37 @@
                                         <div class="notification-content">
                                             <!-- 第一条消息 -->
                                             <div class="notification-item">
-                                                <h3 class="notification-title">您有新的消息！</h3>
-                                                <p class="notification-message">这是第1条消息内容的简介。</p>
+                                                <h3 class="notification-title">您有新的消息!人事部门发布了新的员工手册</h3>
+                                                <p class="notification-message">这是关于公司最新的员工手册,包含了员工行为准则、福利政策等重要信息。</p>
                                             </div>
                                             <!-- 第二条消息 -->
                                             <div class="notification-item">
-                                                <h3 class="notification-title">又一条新消息！</h3>
-                                                <p class="notification-message">这是第2条消息内容的简介。</p>
+                                                <h3 class="notification-title">您有新的消息!财务部门提醒您及时提交报销单</h3>
+                                                <p class="notification-message">本月的报销单提交截止日期为下周五,请您及时填写并提交给财务部门。</p>
                                             </div>
                                             <div class="notification-item">
-                                                <h3 class="notification-title">又一条新消息！</h3>
-                                                <p class="notification-message">这是第3条消息内容的简介。</p>
+                                                <h3 class="notification-title">您有新的消息!行政部门通知办公区域将进行维修</h3>
+                                                <p class="notification-message">下周一至周三,办公区域将进行电路维修,期间可能会有短暂停电,请提前做好准备。</p>
                                             </div>
                                             <div class="notification-item">
-                                                <h3 class="notification-title">又一条新消息！</h3>
-                                                <p class="notification-message">这是第4条消息内容的简介。</p>
+                                                <h3 class="notification-title">您有新的消息!人力资源部门发布了最新的招聘计划</h3>
+                                                <p class="notification-message">公司计划在下个季度招聘10名软件工程师和5名市场营销专员,请各部门提供人员需求。</p>
                                             </div>
                                             <div class="notification-item">
-                                                <h3 class="notification-title">又一条新消息！</h3>
-                                                <p class="notification-message">这是第5条消息内容的简介。</p>
+                                                <h3 class="notification-title">您有新的消息!技术部门发布了新的代码规范</h3>
+                                                <p class="notification-message">为了提高代码质量和可维护性,技术部门制定了新的代码规范,请所有开发人员仔细阅读并遵守。</p>
                                             </div>
                                             <div class="notification-item">
-                                                <h3 class="notification-title">又一条新消息！</h3>
-                                                <p class="notification-message">这是第6条消息内容的简介。</p>
+                                                <h3 class="notification-title">您有新的消息!销售部门分享了上个月的销售业绩</h3>
+                                                <p class="notification-message">上个月,销售部门超额完成了销售目标,其中王刚和李娜两位同事的业绩尤为突出。</p>
                                             </div>
                                             <div class="notification-item">
-                                                <h3 class="notification-title">又一条新消息！</h3>
-                                                <p class="notification-message">这是第7条消息内容的简介。</p>
+                                                <h3 class="notification-title">您有新的消息!培训部门发布了新的培训计划</h3>
+                                                <p class="notification-message">下个月,公司将开展一系列技能培训,包括项目管理、客户服务、领导力等,请感兴趣的员工报名参加。</p>
                                             </div>
                                             <div class="notification-item">
-                                                <h3 class="notification-title">又一条新消息！</h3>
-                                                <p class="notification-message">这是第8条消息内容的简介。</p>
+                                                <h3 class="notification-title">您有新的消息!行政部门提醒您及时更新个人信息</h3>
+                                                <p class="notification-message">为了保证公司员工信息的准确性,请所有员工在本周内登录系统,检查并更新自己的个人信息。</p>
                                             </div>
                                         </div>
                                     </el-card>
@@ -660,7 +660,7 @@
                 if (tags.length > 1) { // 至少要保留一个标签
                     const index = tags.findIndex(t => t.path === tag.path);
 
-                    if (index > 0) {
+                    if (index >= 0) {
                         const prevTag = tags[index - 1];
                         if(this.selectedTag===tag){
                             this.selectedTag = prevTag;
@@ -673,7 +673,7 @@
                         // 更新本地存储
                         // localStorage.setItem('tags', this.tags);
                     } else {
-                        alert('第一个标签不能删除');
+                        alert('最后一个标签不能删除');
                     }
                 } else {
                     alert('至少要保留一个标签');

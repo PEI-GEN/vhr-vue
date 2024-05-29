@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-tabs type='border-card' @tab-click='tabChange'>
+        <el-tabs style="position: relative" type='border-card' @tab-click='tabChange'>
             <el-tab-pane>
                 <span slot='label'><i class='el-icon-bank-card'></i> 奖惩资料</span>
                 <el-table :data='employeeAdv' style='width: 100%'>
@@ -555,10 +555,10 @@
                     </el-table-column>
                 </el-table>
             </el-tab-pane>
-            <el-tab-pane>
-                <span slot='label'><i class='el-icon-guide'></i> 其他信息</span>
-                其他信息
-            </el-tab-pane>
+<!--            <el-tab-pane>-->
+<!--                <span slot='label'><i class='el-icon-guide'></i> 其他信息</span>-->
+<!--                其他信息-->
+<!--            </el-tab-pane>-->
             <el-pagination
                     @size-change='handleSizeChange'
                     class='el_page_div'
@@ -670,5 +670,15 @@
 </script>
 
 <style lang='less'>
-
+    .el-tabs--border-card {
+        height: 98%;
+    }
+    .el-tabs--border-card>.el-tabs__content {
+        height: 100%;
+    }
+    .el-pagination {
+        position: absolute;
+        bottom: 10px;
+        right: 0; /* 定位到容器的右边 */
+    }
 </style>

@@ -39,8 +39,8 @@
 <style lang="scss" scoped>
     #app {
         margin: 20px auto;
-        width: 800px;
-        height: 600px;
+        width: 100%;
+        height: 98%;
         overflow: hidden;
         border-radius: 10px;
         .sidebar, .main {

@@ -53,7 +53,8 @@ import {
     DatePicker,
     RadioGroup,
     CollapseItem,
-    Switch
+    Switch,
+    Autocomplete
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -110,6 +111,7 @@ Vue.use(Icon);
 Vue.use(Select);
 Vue.use(Form);
 Vue.use(Tag);
+Vue.use(Autocomplete);
 Vue.prototype.$alert = MessageBox.alert
 Vue.prototype.$confirm = MessageBox.confirm
 

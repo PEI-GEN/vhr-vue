@@ -4,7 +4,7 @@
 <!--            <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>-->
 <!--            <el-breadcrumb-item>员工调薪</el-breadcrumb-item>-->
 <!--        </el-breadcrumb>-->
-        <el-card shadow='always' :body-style="{ padding: '20px' }">
+        <el-card style="position: relative" shadow='always' :body-style="{ padding: '20px' }">
             <div slot='header'></div>
             <el-table :data='tableData' style='width: 100%'>
                 <el-table-column prop='employee.name' label='名称'>
@@ -68,7 +68,10 @@
             <el-button
                     type='primary'
                     @click='addDialogVisible = true'
-                    style='margin-top: 15px;'
+                    style='margin-top: 15px;
+position: absolute;
+        bottom: 10px; /* 定位到容器的底部 */
+        left: 2%; /* 定位到容器的右边 */'
             >添加
             </el-button
             >
@@ -168,15 +171,15 @@
             },
             del(id) {
                 this.deleteRequest('/per/salary/delete/' + id).then(res => {
-                    this.$message.success(res.data.msg)
+                    this.$message.success(res.msg)
                     this.init()
                 })
                 this.init()
             },
             add() {
                 this.putRequest('/per/salary/add/' + this.workId, this.addEmpSalaryForm).then(res => {
-                    this.$message.success(res.data.msg)
-                    if (res.data.status === 200) {
+                    // this.$message.success(res.msg)
+                    if (res.status === 200) {
                         this.addDialogVisible = false
                         this.init()
                     }
@@ -184,7 +187,7 @@
             },
             update() {
                 this.putRequest('/per/salary/modify', this.editEmpSalaryForm).then(res => {
-                    this.$message.success(res.data.msg)
+                    this.$message.success(res.msg)
                     this.editDialogVisible = false
                 }).catch(error => {
                     this.init()

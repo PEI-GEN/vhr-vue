@@ -4,7 +4,7 @@
 <!--            <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>-->
 <!--            <el-breadcrumb-item>员工调动</el-breadcrumb-item>-->
 <!--        </el-breadcrumb>-->
-        <el-card shadow='always' :body-style="{ padding: '20px' }">
+        <el-card style="position: relative" shadow='always' :body-style="{ padding: '20px' }">
             <div slot='header'></div>
             <el-table :data='tableData' style='width: 100%'>
                 <el-table-column prop='employee.name' label='员工名称'>
@@ -16,10 +16,10 @@
                         {{ scope.row.removeDate | dateFormat }}
                     </template>
                 </el-table-column>
-                <el-table-column prop='beforeDepartmentName' label='旧部门'></el-table-column>
-                <el-table-column prop='beforeJobName' label='旧职位'></el-table-column>
-                <el-table-column prop='afterDepartmentName' label='新部门'></el-table-column>
-                <el-table-column prop='afterJobName' label='新职位'></el-table-column>
+                <el-table-column prop='beforeDepartmentId' label='旧部门'></el-table-column>
+                <el-table-column prop='beforeJobId' label='旧职位'></el-table-column>
+                <el-table-column prop='afterDepartmentId' label='新部门'></el-table-column>
+                <el-table-column prop='afterJobId' label='新职位'></el-table-column>
                 <el-table-column prop='remark' label='备注'></el-table-column>
                 <el-table-column label='操作'>
                     <template slot-scope='scope'>
@@ -70,7 +70,7 @@
             <el-button
                     type='primary'
                     @click='addDialogVisible = true;getDepartmentAndJobLevel()'
-                    style='margin-top: 15px;'
+                    style='margin-top: 15px;position: absolute;bottom: 10px;left: 2%;'
             >添加
             </el-button
             >
@@ -259,7 +259,7 @@
             },
             del(id) {
                 this.deleteRequest('/per/mv/delete/' + id).then(res => {
-                    this.$message.success(res.data.msg)
+                    this.$message.success(res.msg)
                     this.init()
                 })
                 this.init()
@@ -268,8 +268,8 @@
                 this.$refs['addEmpSalaryFormRef'].validate((valid) => {
                     if (valid) {
                         this.putRequest('/per/mv/add/' + this.workId, this.addEmpMvForm).then(res => {
-                            this.$message.success(res.data.msg)
-                            if (res.data.status === 200) {
+                            // this.$message.success(res.msg)
+                            if (res.status === 200) {
                                 this.addDialogVisible = false
                                 this.init()
                             }
@@ -282,7 +282,7 @@
             },
             update() {
                 this.putRequest('/per/mv/modify', this.editEmpMvForm).then(res => {
-                    this.$message.success(res.data.msg)
+                    this.$message.success(res.msg)
                     this.editDialogVisible = false
                     this.init()
                 }).catch(error => {

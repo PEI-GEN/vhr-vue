@@ -4,7 +4,7 @@
 <!--            <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>-->
 <!--            <el-breadcrumb-item>员工奖惩</el-breadcrumb-item>-->
 <!--        </el-breadcrumb>-->
-        <el-card shadow='always' :body-style="{ padding: '20px' }">
+        <el-card style="position: relative" shadow='always' :body-style="{ padding: '20px' }">
             <div slot='header'></div>
             <!-- card body -->
             <el-table :data='tableData' style='width: 100%'>
@@ -61,6 +61,11 @@
                     </template>
                 </el-table-column>
             </el-table>
+            <el-button type='primary' style='margin-top:15px;position: absolute;
+        bottom: 10px; /* 定位到容器的底部 */
+        left: 0; /* 定位到容器的右边 */' @click='showAdd'
+            >添加
+            </el-button>
             <el-pagination
                     class='el_page_div'
                     @size-change='handleSizeChange'
@@ -70,10 +75,6 @@
                     layout='sizes, prev, pager, next'
                     :total='pageTotal'>
             </el-pagination>
-            <el-button type='primary' style='margin-top:15px;' @click='showAdd'
-            >添加
-            </el-button
-            >
             <el-dialog title='添加' :visible.sync='dialogVisible2' width='30%'>
                 <el-form
                         label-position='left'
@@ -220,10 +221,12 @@
             },
             querySearch(queryString, cb) {
                 var restaurants = this.restaurants
+                console.log(restaurants)
                 var results = queryString
                     ? restaurants.filter(this.createFilter(queryString))
                     : restaurants
                 // 调用 callback 返回建议列表的数据
+                console.log(results)
                 cb(results)
             },
             createFilter(queryString) {
@@ -261,8 +264,8 @@
                     this.formLabelAlign.point = this.grade
                     console.log(this.formLabelAlign)
                     this.putRequest('/per/ec/add/' + this.workID, this.formLabelAlign).then(res => {
-                        if (res.data.status === 200) {
-                            this.$message.success(res.data.msg)
+                        if (res.status === 200) {
+                            // this.$message.success(res.data.msg)
                             this.init()
                             this.dialogVisible2 = false
                         } else {
@@ -320,5 +323,19 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
+    }
+
+    .el-pagination {
+        position: absolute;
+        bottom: 10px; /* 定位到容器的底部 */
+        right: 0; /* 定位到容器的右边 */
+    }
+
+    .el-card.is-always-shadow, .el-card.is-hover-shadow:focus, .el-card.is-hover-shadow:hover {
+        height: 100%;
+    }
+
+    .el-card__body {
+        height: 100%;
     }
 </style>

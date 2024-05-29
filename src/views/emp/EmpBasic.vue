@@ -295,9 +295,9 @@
                         width="200"
                         label="操作">
                     <template slot-scope="scope">
-                        <el-button @click="showEditEmpView(scope.row)" style="padding: 3px" size="mini">编辑</el-button>
-                        <el-button class="common-red" style="padding: 3px" size="mini" type="primary">查看高级资料</el-button>
-                        <el-button class="delete-red" @click="deleteEmp(scope.row)" style="padding: 3px" size="mini" type="danger">删除
+                        <el-button @click="showEditEmpView(scope.row)" style="padding: 3px;color: #9e2d36" size="medium">编辑</el-button>
+<!--                        <el-button class="common-red" style="padding: 3px" size="mini" type="primary">查看高级资料</el-button>-->
+                        <el-button class="delete-red" @click="deleteEmp(scope.row)" style="padding: 3px" size="medium" type="danger">删除
                         </el-button>
                     </template>
                 </el-table-column>

@@ -40,7 +40,7 @@
 <!--                </el-col>-->
 <!--            </el-row>-->
 <!--        </el-card>-->
-        <el-card>
+        <el-card style="height: 10%">
             <el-row :gutter="20">
                 <el-col :span="6">
                     <div>

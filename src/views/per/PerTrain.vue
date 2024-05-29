@@ -4,7 +4,7 @@
 <!--            <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>-->
 <!--            <el-breadcrumb-item>员工培训</el-breadcrumb-item>-->
 <!--        </el-breadcrumb>-->
-        <el-card shadow='always' :body-style="{ padding: '20px' }">
+        <el-card style="position: relative" shadow='always' :body-style="{ padding: '20px' }">
             <div slot='header'></div>
             <el-table :data='tableData' style='width: 100%'>
                 <el-table-column prop='employee.name' label='员工名称'>
@@ -66,7 +66,7 @@
             <el-button
                     type='primary'
                     @click='addDialogVisible = true'
-                    style='margin-top: 15px;'
+                    style='margin-top: 15px;position: absolute;bottom: 10px;left: 2%;'
             >添加
             </el-button
             >
@@ -159,15 +159,15 @@
             },
             del(id) {
                 this.deleteRequest('/per/train/delete/' + id).then(res => {
-                    this.$message.success(res.data.msg)
+                    // this.$message.success(res.msg)
                     this.init()
                 })
             },
             add() {
                 this.putRequest('/per/train/add/' + this.addEmpTrainForm.workId,
                     this.addEmpTrainForm).then(res => {
-                    this.$message.success(res.data.msg)
-                    if (res.data.status === 200) {
+                    // this.$message.success(res.msg)
+                    if (res.status === 200) {
                         this.addDialogVisible = false
                         this.init()
                     }
@@ -176,8 +176,8 @@
             update() {
                 console.log('/per/train/modify')
                 this.putRequest('/per/train/modify', this.editEmpTrainForm).then(res => {
-                    console.log(res.data.msg)
-                    this.$message.success(res.data.msg)
+                    console.log(res.msg)
+                    this.$message.success(res.msg)
                     this.editDialogVisible = false
                     this.init()
                 }).catch(error => {
@@ -193,4 +193,13 @@
     }
 </script>
 
-<style lang='less'></style>
+<style lang='less'>
+    .el-card.is-always-shadow, .el-card.is-hover-shadow:focus, .el-card.is-hover-shadow:hover {
+        height: 100%;
+    }
+
+    .el-card__body {
+        height: 100%;
+    }
+
+</style>
