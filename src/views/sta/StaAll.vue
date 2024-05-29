@@ -40,7 +40,7 @@
 <!--                </el-col>-->
 <!--            </el-row>-->
 <!--        </el-card>-->
-        <el-card style="height: 10%">
+        <el-card style="height: 15%">
             <el-row :gutter="20">
                 <el-col :span="6">
                     <div>
@@ -68,11 +68,11 @@
                 </el-col>
             </el-row>
         </el-card>
-        <el-card class='card_cls'>
+        <el-card class='card_cls' style="height: 45%">
             <div id='salary' class='ghCls'></div>
         </el-card>
         <el-card class='card_cls'>
-            <div id='department' class='ghCls' style='height: 650px;'></div>
+            <div id='department' class='ghCls' style="height: 45%"></div>
         </el-card>
     </div>
 </template>

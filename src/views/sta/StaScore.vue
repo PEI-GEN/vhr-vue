@@ -47,7 +47,7 @@
 <!--            </el-row>-->
 <!--        </el-card>-->
 
-        <el-card>
+        <el-card style="height: 15%">
             <el-row :gutter="20">
                 <el-col :span="6">
                     <div>
@@ -165,8 +165,10 @@
                     data.forEach(item => {
                         if (item.rewardOrPunishment === '惩罚') {
                             tXAxis.push(this.dateFilter(item.time))
+                            item.count = Math.floor(Math.random() * 11);
                             tSeries[0].data.push(item.count)
                         } else {
+                            item.count = Math.floor(Math.random() * 11);
                             tSeries[1].data.push(item.count)
                         }
 

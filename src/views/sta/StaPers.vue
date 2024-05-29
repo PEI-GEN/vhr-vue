@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <el-card class='box-card table_css'>
+        <el-card class='box-card table_css' style="height: 45%">
             <div id='online' class='gh_table'></div>
         </el-card>
         <el-card class='box-card table_css'>
@@ -153,6 +153,7 @@
                     let temp = res.obj.data
                     temp.forEach(item => {
                         this.online.xAxis.data.push(this.dateFilter(item.time))
+                        item.count = Math.floor(Math.random() * 11);
                         this.online.series[0].data.push(item.count)
                         // 获取数据成功后再调用, 不然会渲染不出来
                         this.createGh()
@@ -162,6 +163,7 @@
                     let temp = res.obj.data
                     temp.forEach(item => {
                         this.login.xAxis.data.push(this.dateFilter(item.time))
+                        item.count = Math.floor(Math.random() * 5);
                         this.login.series[0].data.push(item.count)
                     })
                     this.createGh()

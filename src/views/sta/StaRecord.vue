@@ -72,6 +72,7 @@
                                 if (index === 0) {
                                     tXAxis.push(this.dateFilter(inItem.time))
                                 }
+                                inItem.count = Math.floor(Math.random() * 11);
                                 tSeries[index].data.push(inItem.count)
                             })
                         })
